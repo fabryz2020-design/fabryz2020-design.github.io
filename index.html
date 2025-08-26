@@ -1,0 +1,625 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta name="description" content="Descubre Humahuaca, Patrimonio Cultural de la Humanidad. Historia, turismo, cultura, alojamiento y más.">
+  <title>Humahuaca - Patrimonio de la Humanidad | Jujuy</title>
+
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
+
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+  <style>
+    /* Reset */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Montserrat', sans-serif;
+      line-height: 1.7;
+      color: #333;
+      background: #f8f8f8;
+      transition: background-color 0.4s, filter 0.4s;
+    }
+
+    body.dark-mode {
+      background: #121212;
+      color: #e0e0e0;
+    }
+
+    body.colorblind-mode {
+      filter: url(#colorblind-filter);
+    }
+
+    /* Colores */
+    :root {
+      --rojo: #8B0000;
+      --rojo-claro: #c1440e;
+      --amarillo: #f9a61a;
+      --celeste: #1e8bb7;
+      --blanco: #fff;
+      --gris: #f5f5f5;
+      --oscuro: #1a1a1a;
+    }
+
+    /* Animaciones */
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+    .fade-in {
+      opacity: 0;
+      animation: fadeIn 1s forwards;
+    }
+
+    /* Cabecera */
+    header {
+      background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url('https://images.unsplash.com/photo-1605874865777-2f28fce88e42?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80') no-repeat center center/cover;
+      color: white;
+      text-align: center;
+      padding: 160px 20px 100px;
+    }
+
+    header h1 {
+      font-family: 'Playfair Display', serif;
+      font-size: 3.8rem;
+      margin-bottom: 15px;
+      text-shadow: 2px 2px 8px rgba(0,0,0,0.9);
+    }
+
+    header p {
+      font-size: 1.4rem;
+      max-width: 800px;
+      margin: 0 auto;
+      text-shadow: 1px 1px 5px rgba(0,0,0,0.8);
+    }
+
+    /* Barra de herramientas flotante */
+    .tools-bar {
+      position: fixed;
+      top: 20px;
+      right: 20px;
+      z-index: 1000;
+      display: flex;
+      gap: 10px;
+      flex-direction: column;
+      align-items: flex-end;
+    }
+
+    .tool-btn {
+      background: rgba(0,0,0,0.7);
+      color: white;
+      border: none;
+      padding: 12px 16px;
+      border-radius: 30px;
+      cursor: pointer;
+      font-size: 0.9rem;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+      transition: all 0.3s;
+    }
+
+    .tool-btn:hover {
+      background: var(--rojo);
+      transform: scale(1.05);
+    }
+
+    /* Navegación */
+    nav {
+      background-color: var(--rojo);
+      position: sticky;
+      top: 0;
+      z-index: 900;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+      transition: background 0.4s;
+    }
+
+    nav.scrolled {
+      background-color: rgba(139, 0, 0, 0.95);
+    }
+
+    nav ul {
+      display: flex;
+      justify-content: center;
+      list-style: none;
+      padding: 12px 0;
+      flex-wrap: wrap;
+    }
+
+    nav ul li a {
+      color: white;
+      margin: 0 14px;
+      text-decoration: none;
+      font-weight: 600;
+      padding: 8px 12px;
+      border-radius: 30px;
+      transition: all 0.3s;
+    }
+
+    nav ul li a:hover {
+      background: var(--amarillo);
+      color: var(--oscuro);
+    }
+
+    /* Secciones */
+    section {
+      padding: 100px 20px;
+      max-width: 1100px;
+      margin: auto;
+      background: white;
+      border-radius: 20px;
+      margin-bottom: 40px;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+      transition: background-color 0.3s;
+    }
+
+    body.dark-mode section {
+      background: #2a2a2a;
+      color: #e0e0e0;
+    }
+
+    section:nth-child(even) {
+      background: var(--gris);
+    }
+
+    body.dark-mode section:nth-child(even) {
+      background: #333;
+    }
+
+    h2 {
+      font-family: 'Playfair Display', serif;
+      font-size: 2.6rem;
+      color: var(--rojo);
+      text-align: center;
+      margin-bottom: 40px;
+      position: relative;
+    }
+
+    body.dark-mode h2 {
+      color: var(--amarillo);
+    }
+
+    h2:after {
+      content: '';
+      display: block;
+      width: 100px;
+      height: 5px;
+      background: var(--amarillo);
+      margin: 15px auto;
+      border-radius: 3px;
+    }
+
+    h3 {
+      color: var(--rojo-claro);
+      margin: 20px 0 10px;
+    }
+
+    body.dark-mode h3 {
+      color: var(--amarillo);
+    }
+
+    p, li {
+      color: #555;
+    }
+
+    body.dark-mode p, body.dark-mode li {
+      color: #ddd;
+    }
+
+    ul {
+      margin: 20px 0;
+      padding-left: 20px;
+    }
+
+    li {
+      margin: 10px 0;
+      line-height: 1.6;
+    }
+
+    /* Imágenes */
+    img {
+      max-width: 100%;
+      height: auto;
+      border-radius: 12px;
+      box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+      display: block;
+      margin: 20px auto;
+      transition: transform 0.3s;
+    }
+
+    img:hover {
+      transform: scale(1.02);
+    }
+
+    /* Iframe (Mapa) */
+    iframe {
+      width: 100%;
+      height: 400px;
+      border: none;
+      border-radius: 15px;
+      margin-top: 20px;
+      box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+    }
+
+    /* Galería */
+    .gallery {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 15px;
+      margin-top: 30px;
+    }
+
+    .gallery img {
+      width: 100%;
+      height: 200px;
+      object-fit: cover;
+      border-radius: 12px;
+      box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+      transition: transform 0.3s;
+    }
+
+    .gallery img:hover {
+      transform: scale(1.05);
+    }
+
+    /* Formulario */
+    form {
+      max-width: 600px;
+      margin: 30px auto;
+      padding: 25px;
+      background: var(--blanco);
+      border-radius: 15px;
+      box-shadow: 0 8px 25px rgba(0,0,0,0.1);
+    }
+
+    body.dark-mode form {
+      background: #333;
+      color: #fff;
+    }
+
+    form h3 {
+      text-align: center;
+      margin-bottom: 20px;
+      color: var(--rojo);
+    }
+
+    body.dark-mode form h3 {
+      color: var(--amarillo);
+    }
+
+    input, textarea {
+      width: 100%;
+      padding: 12px;
+      margin: 10px 0;
+      border: 1px solid #ddd;
+      border-radius: 8px;
+      font-family: 'Montserrat', sans-serif;
+      background: white;
+      color: #333;
+    }
+
+    body.dark-mode input, body.dark-mode textarea {
+      background: #444;
+      border-color: #555;
+      color: #fff;
+    }
+
+    button {
+      background-color: var(--rojo);
+      color: white;
+      border: none;
+      padding: 14px 30px;
+      font-size: 1.1rem;
+      border-radius: 30px;
+      cursor: pointer;
+      display: block;
+      margin: 20px auto 0;
+      font-weight: 600;
+      transition: all 0.3s;
+    }
+
+    button:hover {
+      background-color: var(--amarillo);
+      color: var(--oscuro);
+      transform: scale(1.05);
+    }
+
+    /* Botón flotante "Subir" */
+    #scrollToTop {
+      position: fixed;
+      bottom: 30px;
+      right: 30px;
+      background: var(--rojo);
+      color: white;
+      border: none;
+      width: 50px;
+      height: 50px;
+      border-radius: 50%;
+      font-size: 1.5rem;
+      cursor: pointer;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.3);
+      display: none;
+      z-index: 999;
+    }
+
+    #scrollToTop:hover {
+      background: var(--amarillo);
+      color: var(--oscuro);
+    }
+
+    /* Footer */
+    footer {
+      background: var(--oscuro);
+      color: white;
+      text-align: center;
+      padding: 50px 20px 30px;
+      margin-top: 60px;
+    }
+
+    body.dark-mode footer {
+      background: #0a0a0a;
+    }
+
+    footer h3 {
+      font-size: 1.5rem;
+      margin-bottom: 20px;
+      color: var(--amarillo);
+    }
+
+    footer p {
+      margin: 10px 0;
+      font-size: 0.95rem;
+      color: #ccc;
+    }
+
+    .social-icons {
+      margin: 20px 0;
+    }
+
+    .social-icons a {
+      color: white;
+      font-size: 1.5rem;
+      margin: 0 12px;
+      transition: color 0.3s;
+    }
+
+    .social-icons a:hover {
+      color: var(--amarillo);
+    }
+
+    /* Responsive */
+    @media (max-width: 768px) {
+      header h1 {
+        font-size: 2.8rem;
+      }
+      .tools-bar {
+        flex-direction: row;
+        top: 10px;
+        right: 10px;
+      }
+      .tool-btn {
+        padding: 10px 14px;
+        font-size: 0.85rem;
+      }
+      nav ul {
+        gap: 5px;
+      }
+      section {
+        margin-bottom: 30px;
+        padding: 60px 15px;
+      }
+      h2 {
+        font-size: 2.2rem;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Filtro SVG para daltónicos (protanopia) -->
+  <svg style="position: absolute; width: 0; height: 0;">
+    <defs>
+      <filter id="colorblind-filter">
+        <feColorMatrix type="matrix" values="
+          0.33 0.67 0 0 0
+          0.33 0.67 0 0 0
+          0    0    1 0 0
+          0    0    0 1 0
+        "/>
+      </filter>
+    </defs>
+  </svg>
+
+  <!-- Barra de herramientas -->
+  <div class="tools-bar">
+    <button class="tool-btn" id="lang-btn" title="Cambiar idioma">
+      <i class="fas fa-language"></i> <span>ES</span>
+    </button>
+    <button class="tool-btn" id="colorblind-btn" title="Modo daltónico">
+      <i class="fas fa-eye"></i>
+    </button>
+    <button class="tool-btn" id="darkModeBtn" title="Modo oscuro">
+      <i class="fas fa-moon"></i>
+    </button>
+  </div>
+
+  <!-- Botón flotante "Subir" -->
+  <button id="scrollToTop"><i class="fas fa-arrow-up"></i></button>
+
+  <!-- Cabecera -->
+  <header id="inicio">
+    <h1 data-tr="title">Humahuaca</h1>
+    <p data-tr="subtitle">Patrimonio Cultural de la Humanidad — Jujuy, Argentina</p>
+  </header>
+
+  <!-- Navegación -->
+  <nav id="navbar">
+    <ul>
+      <li><a href="#historia" data-tr="nav.historia">Historia</a></li>
+      <li><a href="#museo" data-tr="nav.museo">Museo</a></li>
+      <li><a href="#instrumentos" data-tr="nav.instrumentos">Instrumentos</a></li>
+      <li><a href="#personas" data-tr="nav.personas">Personas</a></li>
+      <li><a href="#servicios" data-tr="nav.servicios">Servicios</a></li>
+      <li><a href="#hoteles" data-tr="nav.hoteles">Hoteles</a></li>
+      <li><a href="#turismo" data-tr="nav.turismo">Turismo</a></li>
+      <li><a href="#galeria" data-tr="nav.galeria">Galería</a></li>
+      <li><a href="#contacto" data-tr="nav.contacto">Contacto</a></li>
+    </ul>
+  </nav>
+
+  <!-- Historia -->
+  <section id="historia" class="fade-in">
+    <h2 data-tr="historia.title">Historia de Humahuaca</h2>
+    <p data-tr="historia.text">
+      Humahuaca es una ciudad histórica ubicada en la Quebrada de Humahuaca, provincia de Jujuy. 
+      Fue un punto estratégico en tiempos precolombinos, colonia y durante las guerras de independencia.
+      Su cabildo, iglesias y calles coloniales la convierten en un sitio único, declarado 
+      Patrimonio de la Humanidad por la UNESCO en 2003.
+      Durante la gesta independentista, aquí se izó por primera vez la bandera argentina al sur del río Amazonas.
+    </p>
+    <img src="https://www.tangol.com/Blog/Fotos/la-quebrada-de-humahuaca-a-watercolor-landscape_518_201907300956080-resized.jpg" alt="Paisaje de la Quebrada de Humahuaca">
+  </section>
+
+  <!-- Museo -->
+  <section id="museo" class="fade-in">
+    <h2 data-tr="museo.title">Museo Arqueológico Municipal</h2>
+    <p data-tr="museo.text">
+      El Museo Arqueológico Municipal de Humahuaca conserva piezas que cuentan la historia de las culturas 
+      andinas de la región. Alberga cerámicas, textiles, herramientas y restos arqueológicos de más de mil años de antigüedad.
+      Es un espacio fundamental para comprender la vida ancestral en la Quebrada.
+    </p>
+    <img src="https://tilcara.filo.uba.ar/sites/tilcara.filo.uba.ar/files/u2/20180531_154516-min.jpg" alt="Museo de Humahuaca">
+  </section>
+
+  <!-- Instrumentos -->
+  <section id="instrumentos" class="fade-in">
+    <h2 data-tr="instrumentos.title">Instrumentos Musicales Típicos</h2>
+    <p data-tr="instrumentos.text">La música andina es el alma de Humahuaca. Estos son algunos de sus instrumentos más representativos:</p>
+    <ul>
+      <li><strong data-tr="instrumentos.quena">Quena</strong>: <span data-tr="instrumentos.quena_desc">flauta de viento andina, de sonido melancólico y profundo.</span></li>
+      <li><strong data-tr="instrumentos.sikus">Sikus (zampoñas)</strong>: <span data-tr="instrumentos.sikus_desc">conjunto de cañas de distintos tamaños, tocado en pareja.</span></li>
+      <li><strong data-tr="instrumentos.bombo">Bombo legüero</strong>: <span data-tr="instrumentos.bombo_desc">tambor tradicional hecho con cuero y madera.</span></li>
+      <li><strong data-tr="instrumentos.erke">Erke</strong>: <span data-tr="instrumentos.erke_desc">trompeta andina de gran tamaño, usada en fiestas y rituales.</span></li>
+    </ul>
+    <img src="https://www.edisalta.ar/fot2012/siku1.jpg" alt="Sikus y quenas">
+  </section>
+
+  <!-- Personas -->
+  <section id="personas" class="fade-in">
+    <h2 data-tr="personas.title">Personas Ilustres de Humahuaca</h2>
+    <p data-tr="personas.text">Algunos referentes históricos y culturales que nacieron o vivieron en Humahuaca:</p>
+    <ul>
+      <li><strong>General Manuel Eduardo Arias</strong>: <span data-tr="personas.arias">héroe de la independencia argentina, defensor del norte.</span></li>
+      <li><strong>Uña Ramos</strong>: <span data-tr="personas.una">reconocido músico y maestro de la quena, embajador de la música andina.</span></li>
+      <li><strong>Jaime Torres</strong>: <span data-tr="personas.jaime">célebre charanguista y compositor, ícono de la música folclórica.</span></li>
+      <li><strong>Eduardo Vilte</strong>: <span data-tr="personas.vilte">artesano y promotor cultural de la región.</span></li>
+    </ul>
+    <img src="https://media.lacapital.com.ar/p/8423ed7cc7630b39d8b7770878b92baa/adjuntos/203/imagenes/007/048/0007048613/642x0/smart/una-ramos-el-compositor-e-instrumentista-musica-andina-tenia-80-anos.jpg" alt="Uña Ramos tocando la quena">
+  </section>
+
+  <!-- Servicios -->
+  <section id="servicios" class="fade-in">
+    <h2 data-tr="servicios.title">Servicios Esenciales</h2>
+    <h3><i class="fas fa-shield-alt"></i> <span data-tr="servicios.comisarias">Comisarías</span></h3>
+    <ul>
+      <li><strong data-tr="servicios.com1">Comisaría Seccional 15</strong> - <span data-tr="servicios.com1_desc">Humahuaca</span></li>
+      <li><strong data-tr="servicios.com2">Destacamento Policial Santa Ana</strong> - <span data-tr="servicios.com2_desc">Ruta 52</span></li>
+    </ul>
+    <h3><i class="fas fa-pills"></i> <span data-tr="servicios.farmacias">Farmacias</span></h3>
+    <ul>
+      <li><strong data-tr="servicios.farm1">Farmacia Humahuaca</strong> - <span data-tr="servicios.farm1_dir">Av. San Martín 123</span></li>
+      <li><strong data-tr="servicios.farm2">Farmacia San Roque</strong> - <span data-tr="servicios.farm2_dir">Calle Belgrano 45</span></li>
+      <li><strong data-tr="servicios.farm3">Farmacia La Andina</strong> - <span data-tr="servicios.farm3_dir">Plaza Padilla</span></li>
+    </ul>
+    <img src="https://notinor.com/jujuy/wp-content/uploads/2016/08/comisaria-humahuaca-2.jpg" alt="Comisaría de Humahuaca">
+  </section>
+
+  <!-- Hoteles -->
+  <section id="hoteles" class="fade-in">
+    <h2 data-tr="hoteles.title">Hoteles y Alojamientos</h2>
+    <p data-tr="hoteles.text">Disfrutá de una estadía cómoda en pleno corazón de la Quebrada:</p>
+    <ul>
+      <li><strong>Hotel Munay Humahuaca</strong>: <span data-tr="hoteles.munay">Ecológico y con vista a la plaza.</span></li>
+      <li><strong>Hostal Azul Humahuaca</strong>: <span data-tr="hoteles.azul">Económico y cálido, ideal para mochileros.</span></li>
+      <li><strong>Hotel La Peña</strong>: <span data-tr="hoteles.pena">Tradicional, con desayuno regional.</span></li>
+      <li><strong>Santa Teresita Boutique Hotel</strong>: <span data-tr="hoteles.santateresita">Lujo y diseño andino.</span></li>
+      <li><strong>Posada El Sol</strong>: <span data-tr="hoteles.posada">Familiar, con jardín y fogón.</span></li>
+    </ul>
+    <img src="https://www.hotelhuacalera.com/wp-content/uploads/Huacalera-019A.jpg" alt="Hotel típico en Humahuaca">
+  </section>
+
+  <!-- Turismo -->
+  <section id="turismo" class="fade-in">
+    <h2 data-tr="turismo.title">Oficina de Turismo</h2>
+    <p data-tr="turismo.text">
+      La oficina de turismo de Humahuaca está ubicada en la Plaza Dr. Ernesto Padilla, 
+      frente al Monumento a los Héroes de la Independencia. Allí podrás obtener información, 
+      mapas gratuitos, recomendaciones de recorridos y asistencia en múltiples idiomas.
+    </p>
+    <iframe 
+      src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3550.911049235781!2d-65.34950908531602!3d-23.205889684860896!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x941bcd5021bfe7d1%3A0xd3b40f995702d002!2sOficina%20de%20Turismo%20Humahuaca!5e0!3m2!1ses!2sar!4v1692562563000!5m2!1ses!2sar" 
+      allowfullscreen="" 
+      loading="lazy" 
+      referrerpolicy="no-referrer-when-downgrade">
+    </iframe>
+  </section>ññ
+
+  <!-- Galería -->
+  <section id="galeria" class="fade-in">
+    <h2 data-tr="galeria.title">Galería de Imágenes</h2>
+    <div class="gallery">
+      <img src="https://upload.wikimedia.org/wikipedia/commons/b/b0/Tres-cruces-1.jpg" alt="Cerro de los Tres Cruces">
+      <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTZdqDseLKnXBOsEt0WkrXwcF2mtRiTxL7YbQ&s" alt="Plaza de Humahuaca">
+      <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/9/96/Carnaval-jujeno-1511766.jpg/640px-Carnaval-jujeno-1511766.jpg" alt="Danza tradicional">
+      <img src="https://images.unsplash.com/photo-1565557623262-b51c2513a641?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Comida típica">
+      <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/56/Hornocal.JPG/330px-Hornocal.JPG" alt="Paisaje quebrada">
+      <img src="https://media.lacapital.com.ar/p/032623b94356e06c5fa8a43253183330/adjuntos/203/imagenes/024/723/0024723710/1200x675/smart/tur_02_lc_72790044__19-10-2018__000x000jpg.jpg" alt="Camino ancestral">
+    </div>
+  </section>
+
+  <!-- Contacto -->
+  <section id="contacto" class="fade-in">
+    <h2 data-tr="contacto.title">Contáctanos</h2>
+    <form action="#" method="post">
+      <h3 data-tr="contacto.form_title">¿Tenés dudas o querés más información?</h3>
+      <input type="text" name="nombre" placeholder="Tu nombre" required>
+      <input type="email" name="email" placeholder="Tu correo" required>
+      <input type="text" name="asunto" placeholder="Asunto">
+      <textarea name="mensaje" rows="5" placeholder="Tu mensaje" required></textarea>
+      <button type="submit"><i class="fas fa-paper-plane"></i> <span data-tr="contacto.enviar">Enviar Mensaje</span></button>
+    </form>
+  </section>
+
+  <!-- Footer -->
+  <footer>
+    <h3>Humahuaca - Jujuy</h3>
+    <p><i class="fas fa-map-marker-alt"></i> <span data-tr="footer.localidad">Quebrada de Humahuaca, Provincia de Jujuy, Argentina</span></p>
+    <p><i class="fas fa-phone"></i> +54 3887 123456 | <i class="fas fa-envelope"></i> info@turismohumahuaca.gob.ar</p>
+    
+    <div class="social-icons">
+      <a href="#"><i class="fab fa-facebook"></i></a>
+      <a href="#"><i class="fab fa-instagram"></i></a>
+      <a href="#"><i class="fab fa-youtube"></i></a>
+      <a href="#"><i class="fab fa-twitter"></i></a>
+    </div>
+
+    <p>© 2025 <span data-tr="footer.copyright">Municipalidad de Humahuaca — Patrimonio Cultural de la Humanidad (UNESCO)</span></p>
+    <p><span data-tr="footer.diseno">Diseñado con amor por el equipo de Turismo Municipal</span></p>
+  </footer>
+
+  <!-- JavaScript para traducción, modo oscuro, etc. -->
+  <script>
+    // Traducciones
+    const translations = {
+      es: {
+        title: "Humahuaca",
+        subtitle: "Patrimonio Cultural de la Humanidad — Jujuy, Argentina",
+        "nav.h
